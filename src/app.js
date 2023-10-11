@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -25,6 +25,11 @@ app.post('/login', (req, res) => {
     console.log(req.body);
     res.redirect('/login')
 });
+
+app.post('/', (req, res) => {
+    res.redirect('/');
+})
+
 const port = process.env.PORT || 3030;
 app.listen(port, () => {
     console.log(`Servidor iniciado en http://localhost:${port}`);
